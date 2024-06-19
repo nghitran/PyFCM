@@ -45,7 +45,7 @@ class BaseAPI(object):
         """
         self.service_account_file = service_account_file
         self.project_id = project_id
-        self.FCM_END_POINT = self.FCM_END_POINT + f"/{self.project_id}/messages:send"
+        self.FCM_END_POINT = self.FCM_END_POINT + "/%s/messages:send" % (self.project_id)
         self.FCM_REQ_PROXIES = None
         self.custom_adapter = adapter
         self.thread_local = threading.local()
@@ -199,7 +199,7 @@ class BaseAPI(object):
             raise FCMNotRegisteredError("Token not registered")
         else:
             raise FCMServerError(
-                f"FCM server error: Unexpected status code {response.status_code}. The server might be temporarily unavailable."
+                "FCM server error: Unexpected status code %s. The server might be temporarily unavailable." % (response.status_code)
             )
 
     def parse_payload(
