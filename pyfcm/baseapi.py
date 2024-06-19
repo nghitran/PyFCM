@@ -26,8 +26,8 @@ class BaseAPI(object):
 
     def __init__(
         self,
-        service_account_file: str,
-        project_id: str,
+        service_account_file,
+        project_id,
         proxy_dict=None,
         env=None,
         json_encoder=None,
